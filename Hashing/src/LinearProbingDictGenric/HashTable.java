@@ -53,7 +53,8 @@ public class HashTable<T extends Comparable<T>> implements Hash<T> {
 		int key = hash2(word);
 		ArrayList<T> temp = new ArrayList<T>();
 		while(key < this.size && this.word[key]!=null){
-			temp.add(this.meaning[key]);
+			if(this.word[key].compareTo(word) == 0)
+				temp.add(this.meaning[key]);
 			key++;
 		}
 		return temp;

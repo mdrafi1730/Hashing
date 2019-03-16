@@ -1,7 +1,5 @@
 package LinearProbingDictGenric;
-
 import java.util.Scanner;
-
 public class Dictionary {
 	public static void main(String[] args) {
 		Hash<Word> h = new HashTable<Word>(Word.class, 10000);
@@ -29,6 +27,17 @@ public class Dictionary {
 					System.out.println("All Words and their meanings");
 					h.getAll();
 					break;
+				case 4:
+					input.nextLine();
+					System.out.print("Enter the word to delete with meaning = ");
+					word = input.nextLine();
+					boolean flag = h.delete(word);
+					if(flag == true){
+						System.out.println("Word and it's meaning is deleted");
+					}else{
+						System.out.println("Word does not exist");
+					}
+						break;
 				case 5:
 					System.out.println("Thank you");
 					break;
