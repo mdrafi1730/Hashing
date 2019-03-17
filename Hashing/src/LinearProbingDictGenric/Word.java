@@ -1,7 +1,5 @@
 package LinearProbingDictGenric;
-
 import java.util.Scanner;
-
 public class Word implements Comparable<Word> {
 	private String word;
 	private String meaning;
@@ -43,6 +41,4 @@ public class Word implements Comparable<Word> {
 		else
 			return 0;
 	}
-	
-
 }

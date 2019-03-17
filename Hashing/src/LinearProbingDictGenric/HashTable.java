@@ -1,20 +1,16 @@
 package LinearProbingDictGenric;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-
 public class HashTable<T extends Comparable<T>> implements Hash<T> {
 	private int size;
 	private String[] word;
 	private T[] meaning;
-	
 	public HashTable(Class<T> cls, int size){
 		this.size = size;
 		this.word = new String[this.size];
 		this.meaning = (T[])Array.newInstance(cls, this.size);	
 	}
-	
 	public int charToInt(char ch){
 		return (int)ch - 64;
 	}
@@ -28,7 +24,6 @@ public class HashTable<T extends Comparable<T>> implements Hash<T> {
 		}
 		return sum % 10;
 	}
-
 	@Override
 	public boolean put(String word, T meaning) {
 		int key = hash2(word);
