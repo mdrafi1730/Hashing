@@ -22,7 +22,7 @@ public class Word implements Comparable<Word> {
 	}
 	@Override
 	public String toString() {
-		return "Word [word=" + word + ", meaning=" + meaning + "]";
+		return "[word=" + word + ", meaning=" + meaning + "]-->";
 	}
 	public static Word readWord(){
 		Scanner input = new Scanner(System.in);

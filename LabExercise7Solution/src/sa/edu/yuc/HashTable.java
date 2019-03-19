@@ -1,12 +1,9 @@
 package sa.edu.yuc;
-
 import java.util.ArrayList;
-
-
+import java.util.List;
 public class HashTable <T extends Comparable<T>> implements Hash<T> {
 	private int size;
 	private ArrayList<DoublyLinkedList<T>> ht = new ArrayList<>();
-	
 	public HashTable(){
 		this.size = 100000;
 		for(int i = 0; i < this.size; i++){
@@ -19,7 +16,6 @@ public class HashTable <T extends Comparable<T>> implements Hash<T> {
 			ht.add(new DoublyLinkedListImpl<>());
 		}
 	}
-	
 	private static int char2int(char ch) {
 		return (int)ch - 64;
 	}
@@ -34,32 +30,39 @@ public class HashTable <T extends Comparable<T>> implements Hash<T> {
 		}
 		return sum % size;
 	}
-
 	@Override
 	public boolean put(String word, T meaning) {
 		int key = hash2(word);
 		ht.get(key).insertLast(meaning);
 		return true;
 	}
-
 	@Override
-	public String get(String word) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<T> get(String word) {
+		int key = hash2(word);
+		DoublyLinkedList<T> temp = ht.get(key);
+		ArrayList<T> t = new ArrayList<>(); 
+		if(!(temp.isEmpty()))
+			t.add((T) temp.toString());
+		return t;
 	}
-
 	@Override
 	public void getAll() {
-		// TODO Auto-generated method stub
-		
+		for(int i = 0; i < this.size; i++){
+			if(!(ht.get(i).isEmpty())){
+				System.out.print(ht.get(i).toString());
+				System.out.println("Null");
+			}
+		}
 	}
-
 	@Override
 	public boolean delete(String word) {
-		// TODO Auto-generated method stub
-		return false;
+		int key = hash2(word);
+		DoublyLinkedList<T> temp = ht.get(key);
+		if(temp.isEmpty()){
+			return false;
+		}else{
+			ht.set(key, new DoublyLinkedListImpl<T>());
+		}
+		return true;
 	}
-
-	
-
 }
